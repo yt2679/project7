@@ -3,7 +3,7 @@ import pandas as pd
 from tracker.models import Sighting
 
 class Command(BaseCommand):
-    help = 'imports squirrel data form path'
+    help = 'imports squirrel data from path'
     
     def add_arguments(self, parser):
         parser.add_argument('path', type=str)
