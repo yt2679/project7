@@ -17,7 +17,8 @@ class Command(BaseCommand):
             sighting.longitude = row['Y']
             sighting.unique_squirrel_id = row['Unique Squirrel ID']
             sighting.shift = row['Shift']
-            sighting.date = row['Date']
+            date = str(row['Date'])
+            sighting.date = f'{date[4:]}-{date[:2]}-{date[2:4]}'
             sighting.age = row['Age']
             sighting.primary_fur_color = row['Primary Fur Color']
             sighting.location = row['Location']
