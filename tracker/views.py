@@ -7,7 +7,10 @@ from .models import Sighting
 # Create your views here.
 
 def sightings(request):
-    all_squirrels = Sighting.objects.all()
-    return render(request, 'tracker/sightings.html', locals())
+    sightings = Sighting.objects.all()
+    context = {
+            'sightings': sightings,
+    }
+    return render(request, 'tracker/sightings.html', context)
 
 
