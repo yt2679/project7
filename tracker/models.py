@@ -1,13 +1,14 @@
 from django.db import models
 
 class Sighting(models.Model):
+
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
     unique_squirrel_id = models.CharField(max_length=100)
     shift = models.CharField(max_length=20)
     date = models.DateField(null=True)
     age = models.CharField(max_length=20)
-    primary_fur_color = models.CharField(max_length=200)
+    primary_fur_color = models.CharField(max_length=100)
     location  = models.CharField(max_length=200)
     specific_location  = models.CharField(max_length=200)
     running = models.BooleanField(null=True)
@@ -15,7 +16,7 @@ class Sighting(models.Model):
     climbing = models.BooleanField(null=True)
     eating = models.BooleanField(null=True)
     foraging = models.BooleanField(null=True)
-    other_activities = models.CharField(max_length=200)
+    other_activities = models.CharField(max_length=100)
     kuks = models.BooleanField(null=True)
     quaas = models.BooleanField(null=True)
     moans = models.BooleanField(null=True)
