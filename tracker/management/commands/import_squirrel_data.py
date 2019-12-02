@@ -13,8 +13,8 @@ class Command(BaseCommand):
         df = pd.read_csv(path)
         for index, row in df.iterrows():
             sighting = Sighting()
-            sighting.latitude = row['X']
-            sighting.longitude = row['Y']
+            sighting.latitude = row['Y']
+            sighting.longitude = row['X']
             sighting.unique_squirrel_id = row['Unique Squirrel ID']
             sighting.shift = row['Shift']
             date = str(row['Date'])
