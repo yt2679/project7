@@ -13,4 +13,10 @@ def sightings(request):
     }
     return render(request, 'tracker/sightings.html', context)
 
+def coordinates(request):
+    sightings  = Sighting.objects.all()[:100]
+    context = {
+            'sightings' : sightings,
+    }
+    return render(request, 'tracker/map.html', context)
 
