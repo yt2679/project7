@@ -1,3 +1,4 @@
+id,latitude,longitude,unique_squirrel_id,shift,date,age,primary_fur_color,location,specific_location,running,chasing,climbing,eating,foraging,other_activities,kuks,quaas,moans,tail_flags,tail_twitches,approaches,indifferent,runs_from
 1,40.794082388408604,-73.9561344937861,37F-PM-1014-03,PM,2018-10-14,nan,nan,nan,nan,False,False,False,False,False,nan,False,False,False,False,False,False,False,False
 2,40.7948509408039,-73.9570437717691,37E-PM-1006-03,PM,2018-10-06,Adult,Gray,Ground Plane,nan,True,False,False,False,False,nan,False,False,False,False,False,False,False,True
 3,40.766717807255795,-73.9768311751004,2E-AM-1010-03,AM,2018-10-10,Adult,Cinnamon,Above Ground,nan,False,False,True,False,False,nan,False,False,False,False,False,False,True,False

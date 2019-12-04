@@ -14,6 +14,7 @@ class Command(BaseCommand):
         fields = [field.name for field in Sighting._meta.fields]
         with open(path, mode='w') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow(fields)
             for sighting in sightings:
                 writer.writerow([getattr(sighting, field) for field in fields])
                 
