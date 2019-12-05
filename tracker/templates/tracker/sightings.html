@@ -1,5 +1,11 @@
 {% if sightings %}
     <ul>
+    <a href="sightings/add">
+        <button type="button">
+            Add Sighting
+        </button>
+    </a>
+    <br>
     {% for sighting in sightings %}
         <li><a href="{% url 'detail' sighting.id %}">{{ sighting.id }}</a></li>
     {% endfor %}

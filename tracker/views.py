@@ -20,18 +20,33 @@ def detail(request, sighting_id):
     }
     return render(request, 'tracker/detail.html', context)
 
+def edit_sighting(request, sighting_id):
+    sighting = get_object_or_404(Sighting, pk=sighting_id)
+    if request.method == 'POST':
+        form = SightingForm(request.POST, instance=sighting)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/tracker/sightings/{sighting_id}')
+    else:
+        form = SightingForm(instance=sighting)
+    context = {
+        'form': form,
+    }
+    return render(request, 'tracker/edit.html', context)
+    
+
 def add(request): 
     if request.method == 'POST': 
         form = SightingForm(request.POST) 
         if form.is_valid():
             form.save() 
-            return redirect(f'/sightings/') 
+            return redirect('/tracker/sightings') 
     else: 
         form = SightingForm() 
     context = { 
         'form': form,
  } 
-    return render(request,'tracker/edit.html',context)
+    return render(request,'tracker/edit.html', context)
 
 
 

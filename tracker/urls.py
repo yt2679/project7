@@ -7,6 +7,7 @@ urlpatterns = [
         path('sightings', views.sightings, name='sightings'),
         path('map', views.coordinates, name='map'),
         path('sightings/<int:sighting_id>', views.detail, name='detail'),
+        path('sightings/<int:sighting_id>/edit', views.edit_sighting, name='edit_sighting'),
         path('sightings/delete/<int:sighting_id>', views.delete, name='delete'),
         path('sightings/stats', views.stats, name='stats'),
         path('sightings/add', views.add, name='add'),
