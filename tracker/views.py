@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Sighting
-from django.db.models import Count, Q
+from django.db.models import Count
+
+from .forms import SightingForm
 
 # Create your views here.
 
@@ -17,6 +19,20 @@ def detail(request, sighting_id):
             'sighting': sighting
     }
     return render(request, 'tracker/detail.html', context)
+
+def add(request): 
+    if request.method == 'POST': 
+        form = SightingForm(request.POST) 
+        if form.is_valid():
+            form.save() 
+            return redirect(f'/sightings/') 
+    else: 
+        form = SightingForm() 
+    context = { 
+        'form': form,
+ } 
+    return render(request,'tracker/edit.html',context)
+
 
 
 def coordinates(request):
