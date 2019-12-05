@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Sighting
-
+from django.db.models import Count, Q
 
 # Create your views here.
 
@@ -33,3 +33,20 @@ def delete(request, sighting_id):
         sighting.delete()
         return redirect('/tracker/sightings')
     return render(request, 'tracker/detail.html', {'sighting': sighting})
+
+
+def stats(request):
+    sightings_age = Sighting.objects.values('age').order_by('age').annotate(age_count=Count('age'))
+    sightings_primary_fur_color = Sighting.objects.values('primary_fur_color').order_by('primary_fur_color').annotate(primaryfurcolor_count=Count('primary_fur_color'))
+    sightings_location =  Sighting.objects.values('location').order_by('location').annotate(location_count=Count('location'))
+    sightings_running = Sighting.objects.values('running').order_by('running').annotate(running_count=Count('running'))
+    sightings_eating = Sighting.objects.values('eating').order_by('eating').annotate(eating_count=Count('eating'))
+    context = {
+        'sightings_age': sightings_age,
+        'sightings_primary_fur_color': sightings_primary_fur_color,
+        'sightings_location': sightings_location,
+        'sightings_running': sightings_running,
+        'sightings_eating': sightings_eating,
+    }
+    return render(request, 'tracker/stats.html', context)
+
