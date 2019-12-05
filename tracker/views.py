@@ -19,7 +19,7 @@ def edit_sighting(request, sighting_id):
         form = SightingForm(request.POST, instance=sighting)
         if form.is_valid():
             form.save()
-            return redirect(f'/tracker/sightings/{sighting_id}')
+            return redirect(f'/tracker/sightings')
     else:
         form = SightingForm(instance=sighting)
     context = {
@@ -27,7 +27,6 @@ def edit_sighting(request, sighting_id):
     }
     return render(request, 'tracker/edit.html', context)
     
-
 def add(request): 
     if request.method == 'POST': 
         form = SightingForm(request.POST) 
@@ -41,8 +40,6 @@ def add(request):
  } 
     return render(request,'tracker/edit.html', context)
 
-
-
 def coordinates(request):
     # need to choose 100 unique id squirrels
     sightings  = Sighting.objects.all()[:100]
@@ -50,13 +47,6 @@ def coordinates(request):
             'sightings' : sightings,
     }
     return render(request, 'tracker/map.html', context)
-
-def delete(request, sighting_id):
-    sighting = get_object_or_404(Sighting, pk=sighting_id)
-    if request.method == 'POST':
-        sighting.delete()
-        return redirect('/tracker/sightings')
-    return render(request, 'tracker/detail.html', {'sighting': sighting})
 
 
 def stats(request):
@@ -73,4 +63,3 @@ def stats(request):
         'sightings_eating': sightings_eating,
     }
     return render(request, 'tracker/stats.html', context)
-
