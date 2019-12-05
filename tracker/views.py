@@ -22,16 +22,16 @@ def detail(request, sighting_id):
 
 def add(request): 
     if request.method == 'POST': 
-    form = SightingForm(request.POST) 
-    if form.is_valid():
-         form.save() 
-        return redirect(f'/sightings/') 
+        form = SightingForm(request.POST) 
+        if form.is_valid():
+            form.save() 
+            return redirect(f'/sightings/') 
     else: 
         form = SightingForm() 
     context = { 
         'form': form,
  } 
-return render(request,'tracker/edit.html',context)
+    return render(request,'tracker/edit.html',context)
 
 
 
