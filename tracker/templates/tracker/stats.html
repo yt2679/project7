@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 30px;
+}
+th, td {
+  padding: 15px;
+}
+th {
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+tr:nth-child(even) {
+  background-color: #eee;
+}
+tr:nth-child(odd) {
+ background-color: #fff;
+}
+
+</style>
+</head>
+<body>
+
+<h1>General Statistics</h1>
+
+<table style="width:30%">
+  <caption>Age Statistics</caption>
+  <tr>
+    <th>Age</th>
+    <th>Frequency</th>
+  </tr>
+  {% for item in sightings_age %}
+  <tr>
+    {% for key, val in item.items %}
+    <td>{{ val }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+<table style="width:30%">
+  <caption>Primary Fur Color Statistics</caption>
+  <tr>
+    <th>Primary Fur Color</th>
+    <th>Frequency</th>
+  </tr>
+  {% for item in sightings_primary_fur_color %}
+  <tr>
+    {% for key, val in item.items %}
+    <td>{{ val }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+<table style="width:30%">
+  <caption>Location Statistics</caption>
+  <tr>
+    <th>Location</th>
+    <th>Frequency</th>
+  </tr>
+  {% for item in sightings_location %}
+  <tr>
+    {% for key, val in item.items %}
+    <td>{{ val }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+
+<table style="width:30%" >
+  <caption>Running Statistics</caption>
+  <tr>
+    <th>Running</th>
+    <th>Frequency</th>
+  </tr>
+  {% for item in sightings_running %}
+  <tr>
+    {% for key, val in item.items %}
+    <td>{{ val }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+<table style="width:30%" >
+  <caption>Eating Statistics</caption>
+  <tr>
+    <th>Eating</th>
+    <th>Frequency</th>
+  </tr>
+  {% for item in sightings_eating %}
+  <tr>
+    {% for key, val in item.items %}
+    <td>{{ val }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+
+</body>
+</html>
