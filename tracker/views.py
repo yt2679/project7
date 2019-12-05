@@ -13,13 +13,6 @@ def sightings(request):
     }
     return render(request, 'tracker/sightings.html', context)
 
-def detail(request, sighting_id):
-    sighting = get_object_or_404(Sighting, pk=sighting_id)
-    context = {
-            'sighting': sighting
-    }
-    return render(request, 'tracker/detail.html', context)
-
 def edit_sighting(request, sighting_id):
     sighting = get_object_or_404(Sighting, pk=sighting_id)
     if request.method == 'POST':

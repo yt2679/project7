@@ -7,7 +7,7 @@
     </a>
     <br>
     {% for sighting in sightings %}
-        <li><a href="{% url 'detail' sighting.id %}">{{ sighting.id }}</a></li>
+        <li><a href="{% url 'edit' sighting.id %}">{{ sighting.id }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
