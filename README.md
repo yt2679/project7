@@ -35,7 +35,7 @@ There are five views in the web app:
 
 * Update Sightings
   * Located at: */sightings/unique-squirrel-id*
-  * Edit the sightings of the squirrel of the unique squirrel i
+  * Edit the sightings of the squirrel of the unique squirrel id
 
 * Add Sightings
   * Located at: */sightings/add*
