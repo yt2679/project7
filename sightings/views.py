@@ -6,7 +6,7 @@ from .forms import SightingForm
 
 # Create your views here.
 
-def sightings(request):
+def display_sightings(request):
     """Display all sightings in our model"""
 
     sightings = Sighting.objects.all()
@@ -31,7 +31,7 @@ def edit_sighting(request, sighting_id):
     }
     return render(request, 'sightings/edit.html', context)
     
-def add(request): 
+def add_sighting(request): 
     """View to add a sighting"""
 
     if request.method == 'POST': 
@@ -46,17 +46,7 @@ def add(request):
  } 
     return render(request,'sightings/edit.html', context)
 
-def coordinates(request):
-    """View to display map of 100 sightings"""
-
-    sightings  = Sighting.objects.all()[:100]
-    context = {
-            'sightings' : sightings,
-    }
-    return render(request, 'sightings/map.html', context)
-
-
-def stats(request):
+def display_stats(request):
     """View to display some statistics on all sightings"""
 
     sightings_age = Sighting.objects.values('age').order_by('age').annotate(age_count=Count('age'))
