@@ -1,3 +1,3 @@
-from project.wsgi import application
+from projec7.wsgi import application
 
 app = application
