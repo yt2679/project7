@@ -48,4 +48,6 @@ Quaas, Moans, Tail flags, Tail twitches, Approaches, Indifferent, Runs from
   * Located at: */sightings/stats*
   * Shows several stats about the squirrel sightings
 
+## Link to the server
 
+https://squirrel-tracker.appspot.com
