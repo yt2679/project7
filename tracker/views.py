@@ -7,6 +7,8 @@ from .forms import SightingForm
 # Create your views here.
 
 def sightings(request):
+    """Display all sightings in our model"""
+
     sightings = Sighting.objects.all()
     context = {
             'sightings': sightings,
@@ -14,6 +16,8 @@ def sightings(request):
     return render(request, 'tracker/sightings.html', context)
 
 def edit_sighting(request, sighting_id):
+    """View to edit particular sighting"""
+
     sighting = get_object_or_404(Sighting, pk=sighting_id)
     if request.method == 'POST':
         form = SightingForm(request.POST, instance=sighting)
@@ -28,6 +32,8 @@ def edit_sighting(request, sighting_id):
     return render(request, 'tracker/edit.html', context)
     
 def add(request): 
+    """View to add a sighting"""
+
     if request.method == 'POST': 
         form = SightingForm(request.POST) 
         if form.is_valid():
@@ -41,7 +47,8 @@ def add(request):
     return render(request,'tracker/edit.html', context)
 
 def coordinates(request):
-    # need to choose 100 unique id squirrels
+    """View to display map of 100 sightings"""
+
     sightings  = Sighting.objects.all()[:100]
     context = {
             'sightings' : sightings,
@@ -50,6 +57,8 @@ def coordinates(request):
 
 
 def stats(request):
+    """View to display some statistics on all sightings"""
+
     sightings_age = Sighting.objects.values('age').order_by('age').annotate(age_count=Count('age'))
     sightings_primary_fur_color = Sighting.objects.values('primary_fur_color').order_by('primary_fur_color').annotate(primaryfurcolor_count=Count('primary_fur_color'))
     sightings_location =  Sighting.objects.values('location').order_by('location').annotate(location_count=Count('location'))
