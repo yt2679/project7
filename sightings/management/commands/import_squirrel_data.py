@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 import pandas as pd
-from tracker.models import Sighting
+from sightings.models import Sighting
 
 class Command(BaseCommand):
     help = 'imports squirrel data from path'

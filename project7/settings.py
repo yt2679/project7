@@ -31,7 +31,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'tracker.apps.TrackerConfig',    
+    'sightings.apps.SightingsConfig',    
+    'map.apps.MapConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

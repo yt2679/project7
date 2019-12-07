@@ -6,14 +6,14 @@ from .forms import SightingForm
 
 # Create your views here.
 
-def sightings(request):
+def display_sightings(request):
     """Display all sightings in our model"""
 
     sightings = Sighting.objects.all()
     context = {
             'sightings': sightings,
     }
-    return render(request, 'tracker/sightings.html', context)
+    return render(request, 'sightings/sightings.html', context)
 
 def edit_sighting(request, sighting_id):
     """View to edit particular sighting"""
@@ -23,40 +23,30 @@ def edit_sighting(request, sighting_id):
         form = SightingForm(request.POST, instance=sighting)
         if form.is_valid():
             form.save()
-            return redirect(f'/tracker/sightings')
+            return redirect('/sightings')
     else:
         form = SightingForm(instance=sighting)
     context = {
         'form': form,
     }
-    return render(request, 'tracker/edit.html', context)
+    return render(request, 'sightings/edit.html', context)
     
-def add(request): 
+def add_sighting(request): 
     """View to add a sighting"""
 
     if request.method == 'POST': 
         form = SightingForm(request.POST) 
         if form.is_valid():
             form.save() 
-            return redirect('/tracker/sightings') 
+            return redirect('/sightings') 
     else: 
         form = SightingForm() 
     context = { 
         'form': form,
  } 
-    return render(request,'tracker/edit.html', context)
+    return render(request,'sightings/edit.html', context)
 
-def coordinates(request):
-    """View to display map of 100 sightings"""
-
-    sightings  = Sighting.objects.all()[:100]
-    context = {
-            'sightings' : sightings,
-    }
-    return render(request, 'tracker/map.html', context)
-
-
-def stats(request):
+def display_stats(request):
     """View to display some statistics on all sightings"""
 
     sightings_age = Sighting.objects.values('age').order_by('age').annotate(age_count=Count('age'))
@@ -71,4 +61,4 @@ def stats(request):
         'sightings_running': sightings_running,
         'sightings_eating': sightings_eating,
     }
-    return render(request, 'tracker/stats.html', context)
+    return render(request, 'sightings/stats.html', context)
