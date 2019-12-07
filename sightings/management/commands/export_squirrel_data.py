@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from tracker.models import Sighting
+from sightings.models import Sighting
 import csv
 
 class Command(BaseCommand):

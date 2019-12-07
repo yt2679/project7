@@ -13,7 +13,7 @@ def sightings(request):
     context = {
             'sightings': sightings,
     }
-    return render(request, 'tracker/sightings.html', context)
+    return render(request, 'sightings/sightings.html', context)
 
 def edit_sighting(request, sighting_id):
     """View to edit particular sighting"""
@@ -23,13 +23,13 @@ def edit_sighting(request, sighting_id):
         form = SightingForm(request.POST, instance=sighting)
         if form.is_valid():
             form.save()
-            return redirect(f'/tracker/sightings')
+            return redirect('/sightings')
     else:
         form = SightingForm(instance=sighting)
     context = {
         'form': form,
     }
-    return render(request, 'tracker/edit.html', context)
+    return render(request, 'sightings/edit.html', context)
     
 def add(request): 
     """View to add a sighting"""
@@ -38,13 +38,13 @@ def add(request):
         form = SightingForm(request.POST) 
         if form.is_valid():
             form.save() 
-            return redirect('/tracker/sightings') 
+            return redirect('/sightings') 
     else: 
         form = SightingForm() 
     context = { 
         'form': form,
  } 
-    return render(request,'tracker/edit.html', context)
+    return render(request,'sightings/edit.html', context)
 
 def coordinates(request):
     """View to display map of 100 sightings"""
@@ -53,7 +53,7 @@ def coordinates(request):
     context = {
             'sightings' : sightings,
     }
-    return render(request, 'tracker/map.html', context)
+    return render(request, 'sightings/map.html', context)
 
 
 def stats(request):
@@ -71,4 +71,4 @@ def stats(request):
         'sightings_running': sightings_running,
         'sightings_eating': sightings_eating,
     }
-    return render(request, 'tracker/stats.html', context)
+    return render(request, 'sightings/stats.html', context)
